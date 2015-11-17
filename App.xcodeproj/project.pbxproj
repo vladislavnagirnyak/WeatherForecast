@@ -14,6 +14,10 @@
 		515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF71BDF20C7002E3ED4 /* Images.xcassets */; };
 		515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */; };
 		515DFF071BDF20C7002E3ED4 /* AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFF061BDF20C7002E3ED4 /* AppTests.m */; };
+		F54DE9B21BF369AC009E4D4C /* SelectedCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */; };
+		F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5643EEC1BF23303006229D3 /* DefaultCities.plist */; };
+		F5643EF01BF233C1006229D3 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5643EEF1BF233C1006229D3 /* CitiesViewController.m */; };
+		F57901491BF850A800DC6055 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57901481BF850A800DC6055 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +29,18 @@
 			remoteInfo = App;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F5643EE81BF2290C006229D3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		515DFEE71BDF20C7002E3ED4 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +56,13 @@
 		515DFF001BDF20C7002E3ED4 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		515DFF051BDF20C7002E3ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DFF061BDF20C7002E3ED4 /* AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTests.m; sourceTree = "<group>"; };
+		F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SelectedCities.plist; sourceTree = "<group>"; };
+		F5643EEC1BF23303006229D3 /* DefaultCities.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DefaultCities.plist; path = ../DefaultCities.plist; sourceTree = "<group>"; };
+		F5643EEE1BF233C1006229D3 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesViewController.h; sourceTree = "<group>"; };
+		F5643EEF1BF233C1006229D3 /* CitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesViewController.m; sourceTree = "<group>"; };
+		F57901461BF8393400DC6055 /* inc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = inc.h; sourceTree = "<group>"; };
+		F57901471BF850A800DC6055 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		F57901481BF850A800DC6055 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +112,11 @@
 				515DFEF71BDF20C7002E3ED4 /* Images.xcassets */,
 				515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */,
 				515DFEEA1BDF20C7002E3ED4 /* Supporting Files */,
+				F5643EEE1BF233C1006229D3 /* CitiesViewController.h */,
+				F5643EEF1BF233C1006229D3 /* CitiesViewController.m */,
+				F57901461BF8393400DC6055 /* inc.h */,
+				F57901471BF850A800DC6055 /* DetailsViewController.h */,
+				F57901481BF850A800DC6055 /* DetailsViewController.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -96,8 +124,10 @@
 		515DFEEA1BDF20C7002E3ED4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5643EEC1BF23303006229D3 /* DefaultCities.plist */,
 				515DFEEB1BDF20C7002E3ED4 /* Info.plist */,
 				515DFEEC1BDF20C7002E3ED4 /* main.m */,
+				F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -129,6 +159,7 @@
 				515DFEE31BDF20C6002E3ED4 /* Sources */,
 				515DFEE41BDF20C6002E3ED4 /* Frameworks */,
 				515DFEE51BDF20C6002E3ED4 /* Resources */,
+				F5643EE81BF2290C006229D3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -199,6 +230,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F54DE9B21BF369AC009E4D4C /* SelectedCities.plist in Resources */,
+				F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */,
 				515DFEF61BDF20C7002E3ED4 /* Main.storyboard in Resources */,
 				515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */,
 				515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */,
@@ -219,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5643EF01BF233C1006229D3 /* CitiesViewController.m in Sources */,
+				F57901491BF850A800DC6055 /* DetailsViewController.m in Sources */,
 				515DFEF31BDF20C7002E3ED4 /* ViewController.m in Sources */,
 				515DFEF01BDF20C7002E3ED4 /* AppDelegate.m in Sources */,
 				515DFEED1BDF20C7002E3ED4 /* main.m in Sources */,
@@ -418,6 +453,7 @@
 				515DFF0C1BDF20C7002E3ED4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		515DFF0D1BDF20C7002E3ED4 /* Build configuration list for PBXNativeTarget "AppTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +462,7 @@
 				515DFF0F1BDF20C7002E3ED4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

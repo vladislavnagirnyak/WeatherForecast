@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    ViewController *rootController = [[ViewController alloc] init];
+    
+    self.window.rootViewController = [[UINavigationController alloc]
+                                      initWithRootViewController: rootController];
+    
+    /*CGRect rect = { rootController.view.center, 200, 200 };
+    rect.origin.x -= rect.size.width * .5;
+    rect.origin.y -= rect.size.height * .5;
+    UIButton *btn = [[UIButton alloc] initWithFrame: rect];
+    btn.backgroundColor = [UIColor greenColor];
+    btn.titleLabel.text = @"Click me";
+    [btn setAutoresizingMask:
+     UIViewAutoresizingFlexibleLeftMargin |
+     UIViewAutoresizingFlexibleRightMargin |
+     UIViewAutoresizingFlexibleTopMargin |
+     UIViewAutoresizingFlexibleBottomMargin ];
+    [rootController.view addSubview:btn];*/
     return YES;
 }
 
