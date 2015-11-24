@@ -14,7 +14,8 @@
 		515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF71BDF20C7002E3ED4 /* Images.xcassets */; };
 		515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */; };
 		515DFF071BDF20C7002E3ED4 /* AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFF061BDF20C7002E3ED4 /* AppTests.m */; };
-		F54DE9B21BF369AC009E4D4C /* SelectedCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */; };
+		F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = F543C07D1BFCE3FC006D746F /* GDNetworkController.m */; };
+		F55833EE1C0247CE0016D777 /* no-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F55833ED1C0247CE0016D777 /* no-image.png */; };
 		F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5643EEC1BF23303006229D3 /* DefaultCities.plist */; };
 		F5643EF01BF233C1006229D3 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5643EEF1BF233C1006229D3 /* CitiesViewController.m */; };
 		F57901491BF850A800DC6055 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57901481BF850A800DC6055 /* DetailsViewController.m */; };
@@ -56,7 +57,9 @@
 		515DFF001BDF20C7002E3ED4 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		515DFF051BDF20C7002E3ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DFF061BDF20C7002E3ED4 /* AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTests.m; sourceTree = "<group>"; };
-		F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SelectedCities.plist; sourceTree = "<group>"; };
+		F543C07C1BFCE3FC006D746F /* GDNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDNetworkController.h; path = ../GDNetworkController.h; sourceTree = "<group>"; };
+		F543C07D1BFCE3FC006D746F /* GDNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDNetworkController.m; path = ../GDNetworkController.m; sourceTree = "<group>"; };
+		F55833ED1C0247CE0016D777 /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
 		F5643EEC1BF23303006229D3 /* DefaultCities.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DefaultCities.plist; path = ../DefaultCities.plist; sourceTree = "<group>"; };
 		F5643EEE1BF233C1006229D3 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesViewController.h; sourceTree = "<group>"; };
 		F5643EEF1BF233C1006229D3 /* CitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesViewController.m; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 		515DFEE91BDF20C7002E3ED4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F543C07C1BFCE3FC006D746F /* GDNetworkController.h */,
+				F543C07D1BFCE3FC006D746F /* GDNetworkController.m */,
 				515DFEEE1BDF20C7002E3ED4 /* AppDelegate.h */,
 				515DFEEF1BDF20C7002E3ED4 /* AppDelegate.m */,
 				515DFEF11BDF20C7002E3ED4 /* ViewController.h */,
@@ -124,10 +129,10 @@
 		515DFEEA1BDF20C7002E3ED4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F55833ED1C0247CE0016D777 /* no-image.png */,
 				F5643EEC1BF23303006229D3 /* DefaultCities.plist */,
 				515DFEEB1BDF20C7002E3ED4 /* Info.plist */,
 				515DFEEC1BDF20C7002E3ED4 /* main.m */,
-				F54DE9B11BF369AC009E4D4C /* SelectedCities.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,10 +235,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F54DE9B21BF369AC009E4D4C /* SelectedCities.plist in Resources */,
 				F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */,
 				515DFEF61BDF20C7002E3ED4 /* Main.storyboard in Resources */,
 				515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */,
+				F55833EE1C0247CE0016D777 /* no-image.png in Resources */,
 				515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +262,7 @@
 				515DFEF31BDF20C7002E3ED4 /* ViewController.m in Sources */,
 				515DFEF01BDF20C7002E3ED4 /* AppDelegate.m in Sources */,
 				515DFEED1BDF20C7002E3ED4 /* main.m in Sources */,
+				F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
