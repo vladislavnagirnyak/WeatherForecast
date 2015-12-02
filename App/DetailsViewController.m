@@ -8,11 +8,91 @@
 
 #import "DetailsViewController.h"
 #import "GDNetworkController.h"
+#import <CoreData/CoreData.h>
+
+@implementation GDItem
+
+@dynamic url;
+@dynamic image;
+
+@end
 
 @implementation DetailsViewController {
     NSDictionary *_data;
     UIActivityIndicatorView *_activity;
     NSMutableDictionary *_images;
+    NSManagedObjectContext *_dbCont;
+    
+    NSString*(^date)(NSInteger section);
+    NSString*(^weatherDesc)(NSInteger section);
+    NSString*(^maxTemp)(NSInteger section);
+    NSString*(^minTemp)(NSInteger section);
+    NSString*(^sunrise)(NSInteger section);
+    NSString*(^sunset)(NSInteger section);
+    NSString*(^windSpeed)(NSInteger section);
+    NSString*(^iconUrl)(NSInteger section);
+    
+}
+
+- (void) loadWeather {
+    NSDictionary *tmp = [_data objectForKey:@"data"];
+    NSArray *tmpArr = tmp ? [tmp objectForKey:@"weather"] : nil;
+    
+    NSDictionary*(^hourly)(NSInteger section) = ^(NSInteger section) {
+        NSDictionary *bTmp = [tmpArr objectAtIndex:section];
+        NSArray *wdTmpArr = bTmp ? [bTmp objectForKey:@"hourly"] : nil;
+        return wdTmpArr ? [wdTmpArr objectAtIndex:0] : nil;
+    };
+    
+    NSDictionary*(^astronomy)(NSInteger section) = ^(NSInteger section) {
+        NSDictionary *bTmp = [tmpArr objectAtIndex:section];
+        NSArray *wdTmpArr = bTmp ? [bTmp objectForKey:@"astronomy"] : nil;
+        return wdTmpArr ? [wdTmpArr objectAtIndex:0] : nil;
+    };
+    
+    date = ^(NSInteger section) {
+        NSDictionary *wfs = [tmpArr objectAtIndex:section];
+        return [wfs objectForKey:@"date"];
+    };
+    
+    weatherDesc = ^(NSInteger section) {
+        NSDictionary *bTmp = hourly(section);
+        NSArray *wdTmpArr = bTmp ? [bTmp objectForKey:@"weatherDesc"] : nil;
+        bTmp = wdTmpArr ? [wdTmpArr objectAtIndex: 0] : nil;
+        return bTmp ? [bTmp objectForKey:@"value"] : nil;
+    };
+    
+    maxTemp = ^(NSInteger section) {
+        NSDictionary *bTmp = [tmpArr objectAtIndex:section];
+        return bTmp ? [bTmp objectForKey:@"maxtempC"] : nil;
+    };
+    
+    minTemp = ^(NSInteger section) {
+        NSDictionary *bTmp = [tmpArr objectAtIndex:section];
+        return bTmp ? [bTmp objectForKey:@"mintempC"] : nil;
+    };
+    
+    sunrise = ^(NSInteger section) {
+        NSDictionary *bTmp = astronomy(section);
+        return bTmp ? [bTmp objectForKey:@"sunrise"] : nil;
+    };
+    
+    sunset = ^(NSInteger section) {
+        NSDictionary *bTmp = astronomy(section);
+        return bTmp ? [bTmp objectForKey:@"sunset"] : nil;
+    };
+    
+    windSpeed = ^(NSInteger section) {
+        NSDictionary *bTmp = hourly(section);
+        return bTmp ? [bTmp objectForKey:@"windspeedKmph"] : nil;
+    };
+    
+    iconUrl = ^(NSInteger section) {
+        NSDictionary *bTmp = hourly(section);
+        NSArray *bTmpArr = bTmp ? [bTmp objectForKey:@"weatherIconUrl"] : nil;
+        bTmp = bTmpArr ? [bTmpArr objectAtIndex:0] : nil;
+        return bTmp ? [bTmp objectForKey:@"value"] : nil;
+    };
 }
 
 - (NSString *)selectById: (NSInteger)section row:(NSInteger)row hasSection:(BOOL)hasSection outValue:(NSString *__autoreleasing*)outValue {
@@ -116,10 +196,80 @@
     [_activity startAnimating];
     
     [[GDNetworkController sharedInstance] getWeatherByCity:self.city numOfDays: 6 completion:^(NSError *error, NSData *data) {
-        _data = (NSDictionary*)data;
-        [self.tableView reloadData];
+        if (!error && data) {
+            _data = (NSDictionary*)data;
+            [self loadWeather];
+            
+            NSString *v = maxTemp(0);
+            v = minTemp(0);
+            v = windSpeed(0);
+            v = weatherDesc(0);
+            v = sunset(0);
+            v = sunrise(0);
+            v = iconUrl(0);
+            v = date(0);
+            [self.tableView reloadData];
+        }
+        else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: [NSString stringWithFormat:@"Error (%d)", error.code] message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            [alertView show];
+            [self.navigationController popViewControllerAnimated:TRUE];
+        }
         [_activity stopAnimating];
     }];
+    
+    _dbCont = [self coreDataInit];
+}
+
+- (NSManagedObjectContext*)coreDataInit {
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WeatherModel" withExtension:@"momd"]];
+    
+    NSPersistentStoreCoordinator *coord = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    
+    
+    NSURL *url = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"WeatherModel.sqlite"];
+    
+    NSError *error = nil;
+    if (![coord addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:&error])
+        NSLog(@"%@", error);
+    
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+    [context setPersistentStoreCoordinator:coord];
+    
+    return context;
+}
+
+- (void) saveImage: (UIImage*)image url:(NSString*)url {
+    NSManagedObjectContext *context = _dbCont;
+    NSManagedObject *obj = [NSEntityDescription insertNewObjectForEntityForName:@"Images" inManagedObjectContext:context];
+    [obj setValue:url forKey:@"url"];
+    [obj setValue:image forKey:@"image"];
+    NSError *error = nil;
+    if ([context save: &error])
+        NSLog(@"%@", error);
+}
+
+- (UIImage*) selectImageByUrl: (NSString*)url {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Images"
+                                              inManagedObjectContext:_dbCont];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url == %@", url];
+    [fetchRequest setPredicate:predicate];
+    
+    UIImage *img = nil;
+    NSError *error;
+    NSArray *fetchedObjects = [[_dbCont executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (fetchedObjects == nil) {
+        NSLog(@"%@", error);
+    }
+    else if (fetchedObjects.count > 0) {
+        NSManagedObject *obj = fetchedObjects[0];
+        img = [obj valueForKey:@"image"];
+    }
+    
+    return img;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -170,8 +320,16 @@
         
         if (imageUrl) {
             UIImage *tmpImage = [_images objectForKey:imageUrl];
+            if (tmpImage == [NSNull null])
+                tmpImage = nil;
+
+            if (!tmpImage) {
+                tmpImage = [self selectImageByUrl:imageUrl];
+                if (tmpImage)
+                    [_images setObject:tmpImage forKey:imageUrl];
+            }
             
-            if (tmpImage == [NSNull null] || tmpImage == nil) {
+            if (!tmpImage) {
                 cell.imageView.image = [UIImage imageNamed:@"no-image.png"];
                 UIActivityIndicatorView *activImage = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
                 activImage.color = [UIColor blueColor];
@@ -187,6 +345,8 @@
                 [[GDNetworkController sharedInstance] getDataByUrl:imageUrl completion:^(NSError *error, NSData *data) {
                     if (!error && data) {
                         UIImage *img = [UIImage imageWithData: data];
+                        [self saveImage:img url:imageUrl];
+                        
                         [_images setObject: img forKey:imageUrl];
                     
                         NSMutableArray *indexPaths = [NSMutableArray new];
@@ -196,6 +356,7 @@
                             if ([tmpImageUrl isEqualToString: imageUrl])
                                 [indexPaths addObject:[NSIndexPath indexPathForRow:0 inSection:i]];
                         }
+                        
                         [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
                     }
                 }];

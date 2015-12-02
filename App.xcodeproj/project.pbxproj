@@ -14,6 +14,7 @@
 		515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF71BDF20C7002E3ED4 /* Images.xcassets */; };
 		515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */; };
 		515DFF071BDF20C7002E3ED4 /* AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFF061BDF20C7002E3ED4 /* AppTests.m */; };
+		51AE78C81C0E67C000AE64AC /* WeatherModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51AE78C61C0E67C000AE64AC /* WeatherModel.xcdatamodeld */; };
 		F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = F543C07D1BFCE3FC006D746F /* GDNetworkController.m */; };
 		F55833EE1C0247CE0016D777 /* no-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F55833ED1C0247CE0016D777 /* no-image.png */; };
 		F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5643EEC1BF23303006229D3 /* DefaultCities.plist */; };
@@ -57,6 +58,7 @@
 		515DFF001BDF20C7002E3ED4 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		515DFF051BDF20C7002E3ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DFF061BDF20C7002E3ED4 /* AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTests.m; sourceTree = "<group>"; };
+		51AE78C71C0E67C000AE64AC /* WeatherModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherModel.xcdatamodel; sourceTree = "<group>"; };
 		F543C07C1BFCE3FC006D746F /* GDNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDNetworkController.h; path = ../GDNetworkController.h; sourceTree = "<group>"; };
 		F543C07D1BFCE3FC006D746F /* GDNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDNetworkController.m; path = ../GDNetworkController.m; sourceTree = "<group>"; };
 		F55833ED1C0247CE0016D777 /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				F57901461BF8393400DC6055 /* inc.h */,
 				F57901471BF850A800DC6055 /* DetailsViewController.h */,
 				F57901481BF850A800DC6055 /* DetailsViewController.m */,
+				51AE78C61C0E67C000AE64AC /* WeatherModel.xcdatamodeld */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				515DFEF01BDF20C7002E3ED4 /* AppDelegate.m in Sources */,
 				515DFEED1BDF20C7002E3ED4 /* main.m in Sources */,
 				F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */,
+				51AE78C81C0E67C000AE64AC /* WeatherModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +475,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		51AE78C61C0E67C000AE64AC /* WeatherModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				51AE78C71C0E67C000AE64AC /* WeatherModel.xcdatamodel */,
+			);
+			currentVersion = 51AE78C71C0E67C000AE64AC /* WeatherModel.xcdatamodel */;
+			path = WeatherModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 515DFEDF1BDF20C6002E3ED4 /* Project object */;
 }

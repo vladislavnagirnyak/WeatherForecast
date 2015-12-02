@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2F57EEBDDFE30DB089933B7C734FD115A773D466",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "996CABE5177732072759976DEAC1B9E4E59DD982" : 0,
+    "2F57EEBDDFE30DB089933B7C734FD115A773D466" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1807DC94-D2B9-4FEC-875E-2E731968480C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "996CABE5177732072759976DEAC1B9E4E59DD982" : "",
+    "2F57EEBDDFE30DB089933B7C734FD115A773D466" : "App"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "App",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "App.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/vladislavnagirnyak\/WeatherForecast.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2F57EEBDDFE30DB089933B7C734FD115A773D466"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/vladislavnagirnyak\/WeatherForecast.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "996CABE5177732072759976DEAC1B9E4E59DD982"
+    }
+  ]
+}
