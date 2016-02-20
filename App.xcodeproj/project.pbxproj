@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		515DFEED1BDF20C7002E3ED4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFEEC1BDF20C7002E3ED4 /* main.m */; };
 		515DFEF01BDF20C7002E3ED4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFEEF1BDF20C7002E3ED4 /* AppDelegate.m */; };
-		515DFEF31BDF20C7002E3ED4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFEF21BDF20C7002E3ED4 /* ViewController.m */; };
 		515DFEF61BDF20C7002E3ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF41BDF20C7002E3ED4 /* Main.storyboard */; };
 		515DFEF81BDF20C7002E3ED4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF71BDF20C7002E3ED4 /* Images.xcassets */; };
 		515DFEFB1BDF20C7002E3ED4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */; };
 		515DFF071BDF20C7002E3ED4 /* AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DFF061BDF20C7002E3ED4 /* AppTests.m */; };
 		51AE78C81C0E67C000AE64AC /* WeatherModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51AE78C61C0E67C000AE64AC /* WeatherModel.xcdatamodeld */; };
-		F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = F543C07D1BFCE3FC006D746F /* GDNetworkController.m */; };
+		942E88391C2873A700265756 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942E88381C2873A700265756 /* ViewController.m */; };
+		9490021A1C2A316800086434 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949002191C2A316800086434 /* MapKit.framework */; };
+		949002201C2A3A3500086434 /* NVMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9490021F1C2A3A3500086434 /* NVMapController.m */; };
+		F543C07E1BFCE3FC006D746F /* NVNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = F543C07D1BFCE3FC006D746F /* NVNetworkController.m */; };
 		F55833EE1C0247CE0016D777 /* no-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F55833ED1C0247CE0016D777 /* no-image.png */; };
 		F5643EED1BF23303006229D3 /* DefaultCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5643EEC1BF23303006229D3 /* DefaultCities.plist */; };
 		F5643EF01BF233C1006229D3 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5643EEF1BF233C1006229D3 /* CitiesViewController.m */; };
@@ -51,7 +53,6 @@
 		515DFEEE1BDF20C7002E3ED4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		515DFEEF1BDF20C7002E3ED4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		515DFEF11BDF20C7002E3ED4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		515DFEF21BDF20C7002E3ED4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		515DFEF51BDF20C7002E3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		515DFEF71BDF20C7002E3ED4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		515DFEFA1BDF20C7002E3ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -59,8 +60,12 @@
 		515DFF051BDF20C7002E3ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DFF061BDF20C7002E3ED4 /* AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTests.m; sourceTree = "<group>"; };
 		51AE78C71C0E67C000AE64AC /* WeatherModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherModel.xcdatamodel; sourceTree = "<group>"; };
-		F543C07C1BFCE3FC006D746F /* GDNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDNetworkController.h; path = ../GDNetworkController.h; sourceTree = "<group>"; };
-		F543C07D1BFCE3FC006D746F /* GDNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDNetworkController.m; path = ../GDNetworkController.m; sourceTree = "<group>"; };
+		942E88381C2873A700265756 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		949002191C2A316800086434 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9490021E1C2A3A3500086434 /* NVMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapController.h; sourceTree = "<group>"; };
+		9490021F1C2A3A3500086434 /* NVMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapController.m; sourceTree = "<group>"; };
+		F543C07C1BFCE3FC006D746F /* NVNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVNetworkController.h; path = ../NVNetworkController.h; sourceTree = "<group>"; };
+		F543C07D1BFCE3FC006D746F /* NVNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVNetworkController.m; path = ../NVNetworkController.m; sourceTree = "<group>"; };
 		F55833ED1C0247CE0016D777 /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
 		F5643EEC1BF23303006229D3 /* DefaultCities.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DefaultCities.plist; path = ../DefaultCities.plist; sourceTree = "<group>"; };
 		F5643EEE1BF233C1006229D3 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesViewController.h; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9490021A1C2A316800086434 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 		515DFEDE1BDF20C6002E3ED4 = {
 			isa = PBXGroup;
 			children = (
+				949002191C2A316800086434 /* MapKit.framework */,
 				515DFEE91BDF20C7002E3ED4 /* App */,
 				515DFF031BDF20C7002E3ED4 /* AppTests */,
 				515DFEE81BDF20C7002E3ED4 /* Products */,
@@ -109,12 +116,12 @@
 		515DFEE91BDF20C7002E3ED4 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				F543C07C1BFCE3FC006D746F /* GDNetworkController.h */,
-				F543C07D1BFCE3FC006D746F /* GDNetworkController.m */,
+				942E88381C2873A700265756 /* ViewController.m */,
+				F543C07C1BFCE3FC006D746F /* NVNetworkController.h */,
+				F543C07D1BFCE3FC006D746F /* NVNetworkController.m */,
 				515DFEEE1BDF20C7002E3ED4 /* AppDelegate.h */,
 				515DFEEF1BDF20C7002E3ED4 /* AppDelegate.m */,
 				515DFEF11BDF20C7002E3ED4 /* ViewController.h */,
-				515DFEF21BDF20C7002E3ED4 /* ViewController.m */,
 				515DFEF41BDF20C7002E3ED4 /* Main.storyboard */,
 				515DFEF71BDF20C7002E3ED4 /* Images.xcassets */,
 				515DFEF91BDF20C7002E3ED4 /* LaunchScreen.xib */,
@@ -125,6 +132,8 @@
 				F57901471BF850A800DC6055 /* DetailsViewController.h */,
 				F57901481BF850A800DC6055 /* DetailsViewController.m */,
 				51AE78C61C0E67C000AE64AC /* WeatherModel.xcdatamodeld */,
+				9490021E1C2A3A3500086434 /* NVMapController.h */,
+				9490021F1C2A3A3500086434 /* NVMapController.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -202,7 +211,7 @@
 		515DFEDF1BDF20C6002E3ED4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Влад Нагирняк";
 				TargetAttributes = {
 					515DFEE61BDF20C6002E3ED4 = {
@@ -261,11 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5643EF01BF233C1006229D3 /* CitiesViewController.m in Sources */,
+				942E88391C2873A700265756 /* ViewController.m in Sources */,
+				949002201C2A3A3500086434 /* NVMapController.m in Sources */,
 				F57901491BF850A800DC6055 /* DetailsViewController.m in Sources */,
-				515DFEF31BDF20C7002E3ED4 /* ViewController.m in Sources */,
 				515DFEF01BDF20C7002E3ED4 /* AppDelegate.m in Sources */,
 				515DFEED1BDF20C7002E3ED4 /* main.m in Sources */,
-				F543C07E1BFCE3FC006D746F /* GDNetworkController.m in Sources */,
+				F543C07E1BFCE3FC006D746F /* NVNetworkController.m in Sources */,
 				51AE78C81C0E67C000AE64AC /* WeatherModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +339,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -396,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KeepSolid.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -406,6 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KeepSolid.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -424,6 +437,7 @@
 				);
 				INFOPLIST_FILE = AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KeepSolid.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
 			};
@@ -439,6 +453,7 @@
 				);
 				INFOPLIST_FILE = AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KeepSolid.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
 			};

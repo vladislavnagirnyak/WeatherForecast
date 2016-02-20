@@ -14,10 +14,3 @@
 @property NSString *city;
 
 @end
-
-@interface GDItem : NSManagedObject
-
-@property (nonatomic, retain) NSString *url;
-@property (nonatomic, retain) UIImage *image;
-
-@end

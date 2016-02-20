@@ -18,11 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    ViewController *rootController = [[ViewController alloc] init];
+    //ViewController *rootController = [[ViewController alloc] init];
     
-    self.window.rootViewController = [[UINavigationController alloc]
+    /*self.window.rootViewController = [[UINavigationController alloc]
                                       initWithRootViewController: rootController];
-    
+    */
     /*UIButton *btn = [[UIButton alloc] initWithFrame: rect];
     btn.backgroundColor = [UIColor greenColor];
     btn.titleLabel.text = @"Click me";

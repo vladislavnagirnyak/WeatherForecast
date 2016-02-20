@@ -13,38 +13,50 @@
 
 #define CITIES_PATH NS_IN_DOCUMENTS(@"SelectedCities.plist")
 
-@interface ViewController ()
+@interface ViewController () <UIGestureRecognizerDelegate>
 @end
 
 @implementation ViewController {
     NSMutableArray *_data;
-    UIBarButtonItem *_listBtn;
 }
 
-- (void)displayListCities {
-    CitiesViewController *list = [[CitiesViewController alloc] initWithoutSelected:_data];
-    list.OnSelectCity = ^(NSString *item) {
+- (void) onCitiesInit: (NSNotification*)notify {
+    CitiesViewController *cities = notify.object;
+    cities = [cities initWithoutSelected:_data];
+    __weak CitiesViewController *wc = cities;
+    cities.OnSelectCity = ^(NSString *item) {
         [_data addObject:item];
         [self.tableView reloadData];
         [_data writeToFile:CITIES_PATH atomically:TRUE];
-        [self.navigationController popViewControllerAnimated:TRUE];
-        //[self dismissViewControllerAnimated:TRUE completion:nil];
+        [wc.navigationController popViewControllerAnimated:TRUE];
+        //[wc performSegueWithIdentifier:@"BackToMainSegue" sender:nil];
     };
-    [self.navigationController pushViewController:list animated:TRUE];
-    //[self presentViewController:[[UINavigationController alloc] initWithRootViewController: list ] animated:TRUE completion:nil];
+}
+
+- (void) onCitySet:(NSNotification*)notify {
+    DetailsViewController *details = notify.object;
+    if (details)
+        details.city = [_data objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+}
+
+- (void)swiped:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateEnded &&
+        swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self performSegueWithIdentifier:@"ShowMapSegue" sender:self];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _listBtn = [[UIBarButtonItem alloc]
-             initWithTitle:@"Add"
-             style:UIBarButtonItemStylePlain
-             target:self
-             action:@selector(displayListCities)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCitiesInit:) name: @"InitCities" object: nil];
     
-    self.navigationItem.rightBarButtonItem = _listBtn;
-    self.title = @"Selected cities";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCitySet:) name: @"detailCity" object: nil];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
+    swipe.delegate = self;
+    [self.view addGestureRecognizer:swipe];
+    
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
     NSData *plistData = [NSData dataWithContentsOfFile:NS_IN_DOCUMENTS(@"SelectedCities.plist")];
@@ -82,16 +94,8 @@
     return _data.count;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DetailsViewController *details = [[DetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    details.city = [_data objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:details animated:TRUE];
-
-    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *ident = @"root";
+    NSString *ident = @"SelectCityId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident];
@@ -110,6 +114,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     NSLog(@"%@", @"ViewController is destroyed");
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

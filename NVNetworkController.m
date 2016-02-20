@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Влад Нагирняк. All rights reserved.
 //
 
-#import "GDNetworkController.h"
+#import "NVNetworkController.h"
 
 NSString * const g_URL = @"https://api.worldweatheronline.com/free/v2/weather.ashx";
 NSString * const g_Key = @"c4b2ec4188e24e488a9abbbcdf2ca";
 
-@implementation GDNetworkController
+@implementation NVNetworkController
 
-- (void) getWeatherByCity: (NSString*) city numOfDays: (NSInteger)numOfDays completion: (void(^)(NSError *error, id responseObject))completion{
-    NSString *url = [NSString stringWithFormat:@"%@?q=%@&format=json&num_of_days=%d&key=%@&fp=24", g_URL, city, numOfDays, g_Key];
+- (void) getWeatherByQuery: (NSString*) query numOfDays: (NSInteger)numOfDays completion: (void(^)(NSError *error, id responseObject))completion{
+    NSString *url = [NSString stringWithFormat:@"%@?q=%@&format=json&num_of_days=%ld&key=%@&fp=24", g_URL, query, (long)numOfDays, g_Key];
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [self getDataByUrl:url completion:^(NSError *error, NSData *data) {

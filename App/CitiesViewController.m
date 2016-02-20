@@ -35,6 +35,7 @@
 }
 
 - (void)viewDidLoad {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"InitCities" object:self];
     [super viewDidLoad];
 }
 
@@ -58,7 +59,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *ident = @"reuse";
+    NSString *ident = @"cityReuseId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident];

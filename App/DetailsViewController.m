@@ -7,15 +7,8 @@
 //
 
 #import "DetailsViewController.h"
-#import "GDNetworkController.h"
+#import "NVNetworkController.h"
 #import <CoreData/CoreData.h>
-
-@implementation GDItem
-
-@dynamic url;
-@dynamic image;
-
-@end
 
 @implementation DetailsViewController {
     NSDictionary *_data;
@@ -23,18 +16,18 @@
     NSMutableDictionary *_images;
     NSManagedObjectContext *_dbCont;
     
-    NSString*(^date)(NSInteger section);
+    /*NSString*(^date)(NSInteger section);
     NSString*(^weatherDesc)(NSInteger section);
     NSString*(^maxTemp)(NSInteger section);
     NSString*(^minTemp)(NSInteger section);
     NSString*(^sunrise)(NSInteger section);
     NSString*(^sunset)(NSInteger section);
     NSString*(^windSpeed)(NSInteger section);
-    NSString*(^iconUrl)(NSInteger section);
+    NSString*(^iconUrl)(NSInteger section);*/
     
 }
 
-- (void) loadWeather {
+/*- (void) loadWeather {
     NSDictionary *tmp = [_data objectForKey:@"data"];
     NSArray *tmpArr = tmp ? [tmp objectForKey:@"weather"] : nil;
     
@@ -93,7 +86,7 @@
         bTmp = bTmpArr ? [bTmpArr objectAtIndex:0] : nil;
         return bTmp ? [bTmp objectForKey:@"value"] : nil;
     };
-}
+}*/
 
 - (NSString *)selectById: (NSInteger)section row:(NSInteger)row hasSection:(BOOL)hasSection outValue:(NSString *__autoreleasing*)outValue {
     NSDictionary *tmp = [_data objectForKey:@"data"];
@@ -177,6 +170,8 @@
     [super viewWillAppear:animated];
     _images = [NSMutableDictionary new];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"detailCity" object:self];
+    
     self.title = [self.city stringByAppendingString: @" Weather Forecast"];
     
     CGRect rect = { self.view.center, 200, 200 };
@@ -195,23 +190,13 @@
     [self.navigationController.view addSubview:_activity];
     [_activity startAnimating];
     
-    [[GDNetworkController sharedInstance] getWeatherByCity:self.city numOfDays: 6 completion:^(NSError *error, NSData *data) {
+    [[NVNetworkController sharedInstance] getWeatherByQuery:self.city numOfDays: 6 completion:^(NSError *error, NSData *data) {
         if (!error && data) {
             _data = (NSDictionary*)data;
-            [self loadWeather];
-            
-            NSString *v = maxTemp(0);
-            v = minTemp(0);
-            v = windSpeed(0);
-            v = weatherDesc(0);
-            v = sunset(0);
-            v = sunrise(0);
-            v = iconUrl(0);
-            v = date(0);
             [self.tableView reloadData];
         }
         else {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: [NSString stringWithFormat:@"Error (%d)", error.code] message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: [NSString stringWithFormat:@"Error (%ld)", (long)error.code] message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
             [alertView show];
             [self.navigationController popViewControllerAnimated:TRUE];
         }
@@ -342,7 +327,7 @@
             
             if (![_images.allKeys containsObject:imageUrl]) {
                 [_images setObject:[NSNull null] forKey:imageUrl];
-                [[GDNetworkController sharedInstance] getDataByUrl:imageUrl completion:^(NSError *error, NSData *data) {
+                [[NVNetworkController sharedInstance] getDataByUrl:imageUrl completion:^(NSError *error, NSData *data) {
                     if (!error && data) {
                         UIImage *img = [UIImage imageWithData: data];
                         [self saveImage:img url:imageUrl];

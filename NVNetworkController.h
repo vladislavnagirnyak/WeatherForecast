@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface GDNetworkController : NSObject
+@interface NVNetworkController : NSObject
 
-- (void) getWeatherByCity: (NSString*) city numOfDays: (NSInteger)numOfDays completion: (void(^)(NSError *error, id responseObject))completion;
+- (void) getWeatherByQuery: (NSString*) query numOfDays: (NSInteger)numOfDays completion: (void(^)(NSError *error, id responseObject))completion;
 - (void) getDataByUrl: (NSString*) url completion: (void(^)(NSError *error, NSData *data)) completion;
 
 + (instancetype) sharedInstance;
